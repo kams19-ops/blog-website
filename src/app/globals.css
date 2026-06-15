@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-cormorant: "Cormorant Garamond", Georgia, serif;
+  --font-dm-sans: "DM Sans", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: #fdf8f4;
+    color: #3d2b18;
+    font-family: var(--font-dm-sans);
+    overflow-x: hidden;
+  }
+  /* Grain texture overlay */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+@layer utilities {
+  .font-serif {
+    font-family: var(--font-cormorant);
+  }
+  /* Masonry columns */
+  .masonry-grid {
+    columns: 3;
+    column-gap: 1.2rem;
+  }
+  @media (max-width: 768px) {
+    .masonry-grid { columns: 2; }
+  }
+  @media (max-width: 480px) {
+    .masonry-grid { columns: 1; }
+  }
+  .masonry-item {
+    break-inside: avoid;
+    margin-bottom: 1.2rem;
+  }
+  /* Photo grid */
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 0.75rem;
+  }
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #f5ebe0; }
+  ::-webkit-scrollbar-thumb { background: #b8956a; border-radius: 3px; }
+}
