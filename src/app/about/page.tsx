@@ -24,8 +24,8 @@ export default function About() {
                 <div className="flex flex-col gap-3">
                     {[
                         { label: "Twitter / X", href: "https://x.com/Kamakshi_1905" },
-                        { label: "Pinterest", href: "#" },
-                        { label: "GitHub", href: "https://github.com/kams05-ops" },
+                        { label: "Pinterest", href: "#https://in.pinterest.com/kamakshitech05/" },
+                        { label: "GitHub", href: "https://github.com/kams19-ops" },
                         { label: "LinkedIn", href: "https://linkedin.com/in/kamakshi-mudgal" },
                     ].map((s) => (
                         <a key={s.label} href={s.href}
