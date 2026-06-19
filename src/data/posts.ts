@@ -134,6 +134,76 @@ export const posts: Post[] = [
 
 
   `
+  },
+
+  {
+    id: "building-a-log-analyzer-bel-internship",
+    title: "Building a Log Analyzer: My Cybersecurity Internship Project at Bharat Electronics",
+    excerpt:
+      "A defence PSU internship - notes on building an AI-powered log analyzer, the concepts I had to learn from scratch, and the mess I made along the way.",
+    category: "tech",
+    date: "June 19, 2026",
+    readTime: "5 min",
+    emoji: "🛡️",
+    color: "from-slate-300 to-slate-400",
+    featured: false,
+    content: `
+    After my GSoC journey, I wasn't sure what would come next. Turns out, it was something completely different - a cybersecurity-focused internship at Bharat Electronics, where I'm building a Log Analyzer that automatically scans system logs and flags suspicious or unusual activity.
+
+    This post is about that journey so far - what the project actually does, the concepts I had to learn from scratch, and the (many) confusing moments I ran into along the way.
+
+    What is a Log Analyzer, and Why Does It Matter?
+
+    Every system - a laptop, a server, a network device - constantly generates logs: small text records of everything happening behind the scenes. Logins, errors, crashes, access attempts, all of it gets logged.
+
+    The problem? These logs pile up fast, and going through them manually is slow and easy to get wrong. A suspicious login buried in thousands of lines can easily be missed.
+
+    That's exactly the gap this project fills. The goal is simple to state, but interesting to build:
+
+    Automatically read system logs, detect malfunctions or suspicious activity, and save the manual effort of going through them by hand.
+
+    It's a small piece of a much bigger idea in cybersecurity - automated monitoring instead of manual checking.
+
+    The Tech Stack I'm Using
+
+    Once I had the idea clear, the next question was: how do I actually build this? After talking it through with my guide, I landed on:
+
+    React - for the dashboard where results get displayed.
+    Python (FastAPI) - for the backend that does the actual log processing.
+    AI model - to help analyze patterns and flag anomalies intelligently, not just with rigid rules.
+
+    Concepts I Had to Learn From Scratch
+
+    1. Where do logs even come from?
+
+    This was my first "wait, what?" moment. I assumed I'd need to create sample log files myself. Turns out - no. My own laptop is already generating logs constantly, stored in places like Windows Event Logs. The project uses these active, real logs instead of fake test data, which made it feel a lot more real (and a little more nerve-wracking).
+
+    2. Automatic log fetching with Watchdog
+
+    My guide pointed out something obvious in hindsight: manually uploading logs every time defeats the entire purpose of the project. The fix is a Python library called Watchdog.
+
+    Watchdog basically acts like a security guard standing in front of a folder. The moment a new log file shows up or an existing one changes, Watchdog notices instantly and triggers code to handle it - no manual steps involved. Understanding this shifted how I thought about the whole pipeline: from "I fetch logs" to "logs fetch themselves, and I just process them."
+
+    Difficulties I Faced
+
+    I won't pretend this has been smooth. A few honest struggles so far:
+
+    Backend confusion: Early on, I genuinely didn't understand the difference between "fetching" a log and "processing" it - I kept treating them as the same step. It took a few conversations with my guide to realize they're separate stages in the pipeline, and mixing them up would make the system messy and hard to scale.
+
+    Figuring out the right data source: I initially assumed I'd need external or sample logs from somewhere online. Realizing the project wanted real, active logs from my own machine changed my whole approach to testing and made the setup feel a lot more practical.
+
+    UI planning overwhelm: Since the dashboard is in React, I had to start thinking about how to display log data, alerts, and charts in a way that's actually useful - not just a dump of raw text. Deciding what information matters most for a quick glance versus a deep dive is harder than it sounds when you're new to dashboard design.
+
+    Breaking the project into manageable pieces: With three different technologies involved (React, Python, AI), it was easy to feel stuck on "where do I even start?" Splitting the project into three clear phases - backend foundation, AI analysis, and frontend dashboard - made it feel far less overwhelming.
+
+    What's Next
+
+    Right now, I'm in the foundation phase - setting up the Python backend, getting Watchdog to monitor logs automatically, and parsing them into something structured. Once that's solid, the plan is to layer in AI-based analysis, and finally build out the React dashboard to tie it all together.
+
+    This project has already taught me more about real-world system logs and automation than I expected going in. I'll be sharing more updates as each phase comes together - including the parts that go wrong, because those are usually where the actual learning happens.
+
+    Currently a few weeks into my internship at Bharat Electronics, working on automated log analysis for cybersecurity. More updates coming soon.
+  `
   }
 ];
 
